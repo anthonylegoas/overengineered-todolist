@@ -3,7 +3,6 @@
 </script>
 
 <script>
-	import Counter from '$lib/Counter/index.svelte';
 </script>
 
 <svelte:head>
@@ -19,14 +18,9 @@
 			</picture>
 		</div>
 
-		to your new<br />SvelteKit app
+		to the most over engineered todo list ever
 	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
+	<p>A project made to test some technologies.</p>
 </section>
 
 <style>
