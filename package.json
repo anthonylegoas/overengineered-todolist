@@ -1,0 +1,8 @@
+{
+  "name": "overengineered-todolist",
+  "version": "1.0.0",
+  "description": "An over engineered todo list to try some technologies.",
+  "repository": "https://github.com/anthonylegoas/overengineered-todolist.git",
+  "author": "Anthony Le Goas",
+  "license": "MIT"
+}
