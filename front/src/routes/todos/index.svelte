@@ -24,6 +24,7 @@
 <script>
 	import { scale } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
+	import { onMount } from 'svelte';
 
 	export let todos;
 
@@ -35,6 +36,19 @@
 			return t;
 		});
 	}
+
+	const addTodoHandler = (event) => {
+		const created = {
+			uid: new Date().getMilliseconds(),
+			done: false,
+			text: event.detail.value
+		}
+		todos = [...todos, created];
+	}
+
+	onMount(() => {
+		import('$lib/Todo/TodoInput');
+	})
 </script>
 
 <svelte:head>
@@ -43,22 +57,10 @@
 
 <div class="todos">
 	<h1>Todos</h1>
-
-	<form
-		class="new"
-		action="/todos.json"
-		method="post"
-		use:enhance={{
-			result: async (res, form) => {
-				const created = await res.json();
-				todos = [...todos, created];
-
-				form.reset();
-			}
-		}}
-	>
-		<input name="text" aria-label="Add todo" placeholder="+ tap to add a todo" />
-	</form>
+	
+	<div class="new">
+		<todo-input placeholder="Add toto" on:add-todo={addTodoHandler}></todo-input>
+	</div>
 
 	{#each todos as todo (todo.uid)}
 		<div
@@ -118,6 +120,7 @@
 
 	.new {
 		margin: 0 0 0.5rem 0;
+		height: 5rem; /* @fixme / trick to avoid layouot shift */
 	}
 
 	input {
@@ -129,17 +132,6 @@
 		border: 1px solid #ff3e00 !important;
 		outline: none;
 	}
-
-	.new input {
-		font-size: 28px;
-		width: 100%;
-		padding: 0.5em 1em 0.3em 1em;
-		box-sizing: border-box;
-		background: rgba(255, 255, 255, 0.05);
-		border-radius: 8px;
-		text-align: center;
-	}
-
 	.todo {
 		display: grid;
 		grid-template-columns: 2rem 1fr 2rem;
