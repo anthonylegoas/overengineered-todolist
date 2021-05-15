@@ -11,10 +11,10 @@
 
 ## 🔧 Technical stack
 
-<ul style="display: flex; align-items: center; justify-content: center; list-style: none; width: 100%;">
-  <li style="margin: 1rem"><img alt="Svelte" src="./images/logo-svelte.png" style="height: 60px" ></li>
-  <li style="margin: 1rem"><img alt="Lit Element" src="./images/logo-lit.svg" style="height: 60px" ></li>
-</ul>
+
+- <img alt="Svelte" src="./images/logo-svelte.png" height="40px">
+- <img alt="Lit Element" src="./images/logo-lit.svg" height="40px">
+
 
 ## 👤 Author: Anthony Le Goas
 
