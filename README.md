@@ -12,8 +12,10 @@
 ## 🔧 Technical stack
 
 
-- <img alt="Svelte" src="./images/logo-svelte.png" height="40px">
-- <img alt="Lit Element" src="./images/logo-lit.svg" height="40px">
+- <img alt="Svelte" src="./images/logo-svelte.png" height="40px" style="margin: 5px;  margin-bottom: -5px;">
+- <img alt="Lit Element" src="./images/logo-lit.svg" height="40px" style="margin: 5px;">
+- <img alt="Quarkus" src="./images/logo-quarkus.png" height="30px" style="margin: 5px; margin-bottom: -5px;">
+- <img alt="Neo4j" src="./images/logo-neo4j.png" height="50px" style="margin: 5px; margin-bottom: -10px;">
 
 
 ## 👤 Author: Anthony Le Goas
