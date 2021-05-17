@@ -1,0 +1,9 @@
+{
+    "name": "@overengineered-todolist/back",
+    "version": "0.0.1",
+    "scripts" : {
+        "build": "./mvnw package",
+        "build:fat-jar": "./mvnw package -Dquarkus.package.type=uber-jar",
+        "dev": "./mvnw compile quarkus:dev"
+    }
+}
