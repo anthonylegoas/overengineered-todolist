@@ -1,0 +1,7 @@
+{
+    "name": "@overengineered-todolist/database",
+    "version": "0.0.1",
+    "scripts" : {
+        "start": "docker run --publish=7474:7474 --publish=7687:7687 -e 'NEO4J_AUTH=neo4j/secret' neo4j:4.0.0"
+    }
+}
