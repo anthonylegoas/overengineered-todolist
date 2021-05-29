@@ -33,14 +33,27 @@ class TodoResource {
         // open a new async session with Neo4j
         var session : AsyncSession = driver.asyncSession();
         return session
-                // execute the query
-                .runAsync("MATCH (f:Todo) RETURN f ORDER BY f.text")
-                // retrieve a cursor, list the result and create Todos
-                .thenCompose{cursor -> cursor.listAsync{record -> Todo.from(record.get("f").asNode())}}
-                // close the session after processing
-                .thenCompose{todos -> session.closeAsync().thenApply{signal -> todos}}
-                // create a JAX-RS response
-                .thenApply(Response::ok)
-                .thenApply(ResponseBuilder::build);
+            // execute the query, this is a Cypher statement
+            .runAsync("MATCH (f:Todo) RETURN f ORDER BY f.text")
+            // retrieve a cursor, list the result and create Todos
+            .thenCompose{cursor -> cursor.listAsync{record -> Todo.from(record.get("f").asNode())}}
+            // close the session after processing
+            .thenCompose{todos -> session.closeAsync().thenApply{signal -> todos}}
+            // create a JAX-RS response
+            .thenApply(Response::ok)
+            .thenApply(ResponseBuilder::build);
+    }
+
+    @POST
+    fun create(todo: Todo) : CompletionStage<Response> {
+        var session : AsyncSession = driver.asyncSession();
+        return session
+            .writeTransactionAsync{tx -> tx.runAsync("CREATE (f:Todo {text: '"+ todo.text + "'}) RETURN f")
+                .thenCompose{fn -> fn.singleAsync()}}
+            .thenApply{record -> Todo.from(record.get("f").asNode())}
+            .thenCompose{persistedTodo -> session.closeAsync().thenApply{signal -> persistedTodo}}
+            .thenApply{persistedTodo -> Response
+                    .created(URI.create("/todos/" + persistedTodo.id))
+                    .build()};
     }
 }
