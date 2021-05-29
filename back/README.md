@@ -63,3 +63,14 @@ REST is easy peasy with this Hello World RESTEasy resource.
 This example demonstrate RESTEasy JSON serialisation by letting you list, add and remove quark types from a list. Quarked!
 
 [Related guide section...](https://quarkus.io/guides/rest-json#creating-your-first-json-rest-service)
+
+
+### API uses
+
+#### Get todos
+
+`curl localhost:8080/todos`
+
+#### Add todo 
+
+`curl -v -X "POST" "http://localhost:8080/todos" -H 'Content-Type: application/json; charset=utf-8' -d $'{ "text": "use Svelte" }'`
