@@ -4,6 +4,6 @@
     "scripts" : {
         "build": "./mvnw package",
         "build:fat-jar": "./mvnw package -Dquarkus.package.type=uber-jar",
-        "dev": "./mvnw compile quarkus:dev"
+        "start": "./mvnw compile quarkus:dev"
     }
 }
